@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class AnimalDaoImpl implements AnimalDao {
 
-    private Connection conection;
+    private final Connection conection;
 
    public AnimalDaoImpl(Connection connection){
         this.conection = connection;
@@ -20,7 +20,12 @@ public class AnimalDaoImpl implements AnimalDao {
                         "id integer not null auto_increment, " +
                         "name varchar(100), " +
                         "species varchar (100), primary key(id))");
+    }
 
+
+    public void insertAnimals(String name, String species) throws SQLException{
+        Statement statement = conection.createStatement();
+        statement.execute("Insert into animals (name, species) values (\"Lucky\", \"Dog\")");
     }
 
     @Override

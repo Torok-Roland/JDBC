@@ -11,6 +11,8 @@ public interface AnimalDao {
     void createTable() throws SQLException;
 
     // adaugare date                      CREATE animals
+    void insertAnimals() throws SQLException;
+
 
     //gasire date                         READ animals
 

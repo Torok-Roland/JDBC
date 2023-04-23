@@ -3,6 +3,8 @@ package org.example;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.example.dao.AnimalDao;
 import org.example.dao.AnimalDaoImpl;
+import org.example.dao.FoodDao;
+import org.example.dao.FoodDaoImpl;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -38,6 +40,7 @@ public class Main {
             LOGGER.log(Level.INFO, "The connection succeed");
 
             AnimalDao animalDao = new AnimalDaoImpl(connection);
+            FoodDao foodDao = new FoodDaoImpl(connection);
 
             //statement used for transferring sql commands to db server
 
@@ -45,18 +48,14 @@ public class Main {
 
 
             animalDao.createTable();
-            statement.execute("create table if not exists food (" +
-                    "id integer auto_increment, " +
-                    "name varchar (100)," +
-                    " description varchar(100)," +
-                    "calories_per_100 integer," +
-                    "expiration_date date," +
-                    "primary key(id))");
+            foodDao.createTable();
+
             LOGGER.info("Tables creation was successful");
 
 
             // we can reuse statement object
             statement.execute("Insert into animals (name, species) values (\"Lucky\", \"Dog\")");
+            animalDao.insertAnimals();
             LOGGER.info("Data insertion was successful");
 
             statement.execute("update animals set name = \"LuckysMother\" where id = 1");
@@ -104,7 +103,7 @@ public class Main {
             }
 
             animalDao.dropTable();
-           // statement.execute("drop table food");
+            foodDao.dropTable();
             LOGGER.info("Tables dropped successfully");
 
 
