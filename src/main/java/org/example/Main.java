@@ -55,7 +55,7 @@ public class Main {
 
             // we can reuse statement object
             statement.execute("Insert into animals (name, species) values (\"Lucky\", \"Dog\")");
-            animalDao.insertAnimals();
+
             LOGGER.info("Data insertion was successful");
 
             statement.execute("update animals set name = \"LuckysMother\" where id = 1");

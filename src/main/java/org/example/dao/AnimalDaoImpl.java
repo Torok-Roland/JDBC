@@ -1,6 +1,9 @@
 package org.example.dao;
 
+import org.example.model.Animal;
+
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -23,10 +26,16 @@ public class AnimalDaoImpl implements AnimalDao {
     }
 
 
-    public void insertAnimals(String name, String species) throws SQLException{
-        Statement statement = conection.createStatement();
-        statement.execute("Insert into animals (name, species) values (\"Lucky\", \"Dog\")");
-    }
+    public void creatAnimals(Animal animal) throws SQLException{
+        PreparedStatement preparedStatement = conection.prepareStatement(
+                "Insert into animals (name, species) values (?,?)");
+
+        preparedStatement.setString(1,animal.getName());
+        preparedStatement.setString(2,animal.getSpecies());
+        preparedStatement.execute();
+
+   }
+
 
     @Override
     public void dropTable() throws SQLException {
