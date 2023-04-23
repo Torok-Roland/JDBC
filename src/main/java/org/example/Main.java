@@ -6,6 +6,7 @@ import org.example.dao.AnimalDaoImpl;
 import org.example.dao.FoodDao;
 import org.example.dao.FoodDaoImpl;
 import org.example.model.Animal;
+import org.example.model.Food;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -57,28 +58,28 @@ public class Main {
             // we can reuse statement object
 
             animalDao.createAnimals(new Animal(null,"Lucky", "dog"));
-            animalDao.createAnimals(new Animal()null,"Rex", "dog");
+            animalDao.createAnimals(new Animal(null,"Rex", "dog"));
             LOGGER.info("Data insertion was successful");
 
             statement.execute("update animals set name = \"LuckysMother\" where id = 1");
 
-
-
-
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "insert into food(name, description, calories_per_100, expiration_date) values (?, ?, ?, ?)");
-            preparedStatement.setString(1, "ciocolata");
-            preparedStatement.setString(2, "ciocolata de casa");
-            preparedStatement.setInt(3, 550);
-            preparedStatement.setDate(4, Date.valueOf("2024-10-12"));
-
-            preparedStatement.execute();
-
-            preparedStatement.setString(1,"shaorma");
-            preparedStatement.setString(2,"shaorma cu de toate");
-            preparedStatement.setInt(3,850);
-            preparedStatement.setDate(4, Date.valueOf("2024-01-01"));
-            preparedStatement.execute();
+                // De revenit!
+//            Date expirationDate =
+//            foodDao.createTable(new Food(null,"ciocolata", "ciocolata de casa", 550, Date.valueOf("2")));
+//            PreparedStatement preparedStatement = connection.prepareStatement(
+//                    "insert into food(name, description, calories_per_100, expiration_date) values (?, ?, ?, ?)");
+//            preparedStatement.setString(1, "ciocolata");
+//            preparedStatement.setString(2, "ciocolata de casa");
+//            preparedStatement.setInt(3, 550);
+//            preparedStatement.setDate(4, Date.valueOf("2024-10-12"));
+//
+//            preparedStatement.execute();
+//
+//            preparedStatement.setString(1,"shaorma");
+//            preparedStatement.setString(2,"shaorma cu de toate");
+//            preparedStatement.setInt(3,850);
+//            preparedStatement.setDate(4, Date.valueOf("2024-01-01"));
+//            preparedStatement.execute();
             // intodeauna trebuie rulat .execute() daca vrem sa fie executat codul sql pe baza de date
 
 

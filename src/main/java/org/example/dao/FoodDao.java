@@ -7,7 +7,7 @@ import java.sql.SQLException;
 //
 public interface FoodDao {
 
-    // creat tabel
+    // create tabel
     void createTable() throws SQLException;
 
     // adaugare date                      CREATE animals
