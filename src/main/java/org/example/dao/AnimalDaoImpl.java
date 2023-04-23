@@ -26,7 +26,7 @@ public class AnimalDaoImpl implements AnimalDao {
     }
 
 
-    public void creatAnimals(Animal animal) throws SQLException{
+    public void createAnimals(Animal animal) throws SQLException{
         PreparedStatement preparedStatement = conection.prepareStatement(
                 "Insert into animals (name, species) values (?,?)");
 

@@ -5,6 +5,7 @@ import org.example.dao.AnimalDao;
 import org.example.dao.AnimalDaoImpl;
 import org.example.dao.FoodDao;
 import org.example.dao.FoodDaoImpl;
+import org.example.model.Animal;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -54,8 +55,9 @@ public class Main {
 
 
             // we can reuse statement object
-            statement.execute("Insert into animals (name, species) values (\"Lucky\", \"Dog\")");
 
+            animalDao.createAnimals(new Animal(null,"Lucky", "dog"));
+            animalDao.createAnimals(new Animal()null,"Rex", "dog");
             LOGGER.info("Data insertion was successful");
 
             statement.execute("update animals set name = \"LuckysMother\" where id = 1");

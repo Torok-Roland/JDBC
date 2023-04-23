@@ -1,5 +1,7 @@
 package org.example.dao;
 
+import org.example.model.Food;
+
 import java.sql.SQLException;
 
 //
@@ -9,6 +11,8 @@ public interface FoodDao {
     void createTable() throws SQLException;
 
     // adaugare date                      CREATE animals
+    void createFood(Food food) throws SQLException;
+
 
     //gasire date                         READ animals
 
@@ -19,7 +23,6 @@ public interface FoodDao {
     // sters tabel
 
     void dropTable() throws SQLException;
-
 
 
 }

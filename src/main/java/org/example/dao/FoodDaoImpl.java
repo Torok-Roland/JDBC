@@ -1,10 +1,12 @@
 package org.example.dao;
 
+import org.example.model.Food;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class FoodDaoImpl implements FoodDao{
+public class FoodDaoImpl implements FoodDao {
 
     private final Connection conection;
 
@@ -22,6 +24,9 @@ public class FoodDaoImpl implements FoodDao{
                 "calories_per_100 integer," +
                 "expiration_date date," +
                 "primary key(id))");
+    }
+
+    public void createFood(Food food) throws SQLException{
 
     }
 

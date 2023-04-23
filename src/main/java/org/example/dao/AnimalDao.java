@@ -13,7 +13,7 @@ public interface AnimalDao {
     void createTable() throws SQLException;
 
     // adaugare date                      CREATE animals
-    void creatAnimals(Animal animal) throws SQLException;
+    void createAnimals(Animal animal) throws SQLException;
 
 
     //gasire date                         READ animals
