@@ -10,6 +10,11 @@ public class Main {
     private final static Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
+
+        // git add .
+        // git commit -m "add"
+        // git push origin master / main
+
         String dbLocation = "localhost:3306";
         String dbName = "jdbc_db";
         String dbUser = "root";
