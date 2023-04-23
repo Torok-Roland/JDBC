@@ -43,11 +43,30 @@ public class AnimalDaoImpl implements AnimalDao {
             Animal animal = new Animal();
             animal.setId(rs.getInt(1));
             animal.setName(rs.getString(2));
-            animal.setName(rs.getString(3));
+            animal.setSpecies(rs.getString(3));
 
             animals.add(animal);
         }
         return animals;
+    }
+
+    public void updateAnimals(Animal updatedAnimal) throws SQLException{
+        PreparedStatement preparedStatement = connection.prepareStatement("update animals " +
+                "set name = ?, " +
+                "species = ?" +
+                " where id = ?;");
+        preparedStatement.setString(1, updatedAnimal.getName());
+        preparedStatement.setString(2, updatedAnimal.getSpecies());
+        preparedStatement.setInt(3, updatedAnimal.getId());
+        preparedStatement.execute();
+    }
+    @Override
+    public void deleteAnimal(Integer animalId) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "delete from Animals where id = ?"
+        );
+        preparedStatement.setInt(1,animalId);
+        preparedStatement.execute();
     }
 
 

@@ -1,7 +1,7 @@
 package org.example.dao;
 
 import org.example.model.Food;
-
+import java.util.List;
 import java.sql.SQLException;
 
 //
@@ -15,6 +15,7 @@ public interface FoodDao {
 
 
     //gasire date                         READ animals
+    List<Food> read();
 
     //modificare date                     UPDATE animals
 

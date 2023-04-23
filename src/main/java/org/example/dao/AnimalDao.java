@@ -21,8 +21,12 @@ public interface AnimalDao {
     List<Animal> read() throws SQLException;
 
     //modificare date                     UPDATE animals
+    void updateAnimals(Animal updatedAnimal) throws SQLException;
+
 
     //stergere date                       DELETE animals
+    void deleteAnimal(Integer animalId) throws SQLException;
+
 
     // sters tabel
 

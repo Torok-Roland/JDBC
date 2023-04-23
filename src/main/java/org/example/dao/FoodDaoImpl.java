@@ -1,7 +1,7 @@
 package org.example.dao;
 
 import org.example.model.Food;
-
+import java.util.List;
 import java.sql.*;
 
 public class FoodDaoImpl implements FoodDao {
@@ -33,6 +33,12 @@ public class FoodDaoImpl implements FoodDao {
         preparedStatement.setDate(4, food.getExpirationDate());
 
         preparedStatement.execute();
+    }
+
+    public List<Food> read(){
+
+
+        return null;
     }
 
     @Override

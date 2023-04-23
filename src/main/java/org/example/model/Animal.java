@@ -39,4 +39,13 @@ public class Animal {
     public void setSpecies(String species) {
         this.species = species;
     }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", species='" + species + '\'' +
+                '}';
+    }
 }

@@ -9,6 +9,7 @@ import org.example.model.Animal;
 import org.example.model.Food;
 
 import java.sql.*;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -57,50 +58,43 @@ public class Main {
 
             // we can reuse statement object
 
-            animalDao.createAnimals(new Animal(null,"Lucky", "dog"));
-            animalDao.createAnimals(new Animal(null,"Rex", "dog"));
-            LOGGER.info("Data insertion was successful");
+            animalDao.createAnimals(new Animal(null, "Lucky", "dog"));
+            animalDao.createAnimals(new Animal(null, "Rex", "dog"));
+            LOGGER.info("Data insertion was successful for Animals");
 
             statement.execute("update animals set name = \"LuckysMother\" where id = 1");
 
-                // De revenit!
-//            Date expirationDate =
-//            foodDao.createTable(new Food(null,"ciocolata", "ciocolata de casa", 550, Date.valueOf("2")));
-//            PreparedStatement preparedStatement = connection.prepareStatement(
-//                    "insert into food(name, description, calories_per_100, expiration_date) values (?, ?, ?, ?)");
-//            preparedStatement.setString(1, "ciocolata");
-//            preparedStatement.setString(2, "ciocolata de casa");
-//            preparedStatement.setInt(3, 550);
-//            preparedStatement.setDate(4, Date.valueOf("2024-10-12"));
-//
-//            preparedStatement.execute();
-//
-//            preparedStatement.setString(1,"shaorma");
-//            preparedStatement.setString(2,"shaorma cu de toate");
-//            preparedStatement.setInt(3,850);
-//            preparedStatement.setDate(4, Date.valueOf("2024-01-01"));
-//            preparedStatement.execute();
-            // intodeauna trebuie rulat .execute() daca vrem sa fie executat codul sql pe baza de date
+
+            animalDao.deleteAnimal(1);
+            LOGGER.info("The method for delete an information from animal was successfully");
 
 
-            ResultSet rs = statement.executeQuery("SELECT * FROM animals");
-            System.out.println("Animals: ");
-            while (rs.next()){
-                System.out.println("id: " + rs.getInt(1));
-                System.out.println("name: " + rs.getString(2));
-                System.out.println("Species: " + rs.getString(3));
+            // Adaugarea in tabelul the food:
+            Date expirationDateForChocolate = Date.valueOf("2024-12-12");
+            foodDao.createFood(new Food(null, "ciocolata", "ciocolata de casa", 550, expirationDateForChocolate));
+
+            // Adaugarea in tabelul the food:
+            Date expirationForShaorma = Date.valueOf("2023-05-01");
+            foodDao.createFood(new Food(null, "shaorma", "shaorma cu de toate", 850, expirationForShaorma));
+            LOGGER.info("Data insertion was successful for Foods");
+
+
+            List<Animal> animals = animalDao.read();
+            System.out.println("Animals from the list are: ");
+            for(Animal animal : animals){
+                System.out.println(animal);
             }
-
+            LOGGER.info("The data from Animals table was read");
             System.out.println("**********************************************");
 
             ResultSet rs2 = statement.executeQuery("SELECT * FROM food order by calories_per_100");
             System.out.println("Foods: ");
-            while (rs2.next()){
+            while (rs2.next()) {
 
                 System.out.print("id. " + rs2.getInt(1) + " - ");
                 System.out.print(rs2.getString(2) + " - ");
                 System.out.print(rs2.getString(3) + " - ");
-                System.out.print(rs2.getInt(4) +"kcal per 100g - ");
+                System.out.print(rs2.getInt(4) + "kcal per 100g - ");
                 System.out.print("expiră la " + rs2.getDate(5));
                 System.out.println();
             }
