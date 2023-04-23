@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9f3e4b9-4ed1-48e6-8223-e3108bb111b4" name="Changes" comment="">
+    <list default="true" id="f9f3e4b9-4ed1-48e6-8223-e3108bb111b4" name="Changes" comment="add database configuration and connect to db">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
@@ -67,6 +67,26 @@
       <option name="presentableId" value="Default" />
       <updated>1682145246125</updated>
     </task>
+    <task id="LOCAL-00001" summary="Changes">
+      <created>1682155301119</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1682155301119</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add database configuration and connect to db">
+      <created>1682155535867</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682155535867</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Changes" />
+    <MESSAGE value="add database configuration and connect to db" />
+    <option name="LAST_COMMIT_MESSAGE" value="add database configuration and connect to db" />
   </component>
 </project>
