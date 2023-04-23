@@ -1,6 +1,8 @@
 package org.example;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
+import org.example.dao.AnimalDao;
+import org.example.dao.AnimalDaoImpl;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -35,12 +37,23 @@ public class Main {
             Connection connection = dataSource.getConnection();
             LOGGER.log(Level.INFO, "The connection succeed");
 
+            AnimalDao animalDao = new AnimalDaoImpl(connection);
+
             //statement used for transferring sql commands to db server
 
             Statement statement = connection.createStatement();
-            statement.execute("create table if not exists animals ( id integer not null auto_increment, name varchar(100), species varchar (100), primary key(id))");
 
-            LOGGER.info("Create table animals was successful");
+
+            animalDao.createTable();
+            statement.execute("create table if not exists food (" +
+                    "id integer auto_increment, " +
+                    "name varchar (100)," +
+                    " description varchar(100)," +
+                    "calories_per_100 integer," +
+                    "expiration_date date," +
+                    "primary key(id))");
+            LOGGER.info("Tables creation was successful");
+
 
             // we can reuse statement object
             statement.execute("Insert into animals (name, species) values (\"Lucky\", \"Dog\")");
@@ -50,13 +63,7 @@ public class Main {
 
 
 
-            statement.execute("create table if not exists food (" +
-                    "id integer auto_increment, " +
-                    "name varchar (100)," +
-                    " description varchar(100)," +
-                    "calories_per_100 integer," +
-                    "expiration_date date," +
-                    "primary key(id))");
+
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "insert into food(name, description, calories_per_100, expiration_date) values (?, ?, ?, ?)");
             preparedStatement.setString(1, "ciocolata");
@@ -96,8 +103,10 @@ public class Main {
                 System.out.println();
             }
 
+            animalDao.dropTable();
            // statement.execute("drop table food");
-           // statement.execute("drop table animals");
+            LOGGER.info("Tables dropped successfully");
+
 
 //            System.out.println(rs.next());
 //            System.out.println(rs.getInt(1));
